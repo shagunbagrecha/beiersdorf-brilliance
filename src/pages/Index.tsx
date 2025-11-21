@@ -95,7 +95,7 @@ const Index = () => {
                 className="h-16 mx-auto mb-4 object-contain"
               />
               <h1 className="text-6xl font-bold text-foreground text-center">
-                Beiersdorf Campus
+                Beyond Borders
               </h1>
             </motion.div>
             
