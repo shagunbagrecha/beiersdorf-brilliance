@@ -66,10 +66,10 @@ export const CampusView = ({ onBuildingSelect, completedBuildings }: CampusViewP
         className="relative z-20 text-center pt-12 px-4"
       >
         <h1 className="text-5xl font-bold text-foreground mb-4">
-          Beiersdorf Campus
+          Beyond Borders
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Select a building to begin your challenge and recover the formula fragments
+          Begin your challenge and recover the formula fragments
         </p>
       </motion.div>
 
