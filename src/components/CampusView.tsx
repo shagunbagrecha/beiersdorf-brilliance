@@ -86,7 +86,7 @@ export const CampusView = ({ onBuildingSelect, completedBuildings }: CampusViewP
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: index * 0.2 }}
-            className="absolute flex flex-col items-center gap-4"
+            className="absolute flex flex-col items-center gap-6"
             style={{ 
               left: building.position.x, 
               top: building.position.y,
@@ -94,7 +94,7 @@ export const CampusView = ({ onBuildingSelect, completedBuildings }: CampusViewP
             }}
           >
             {/* Building Name Label on Top */}
-            <div className="bg-primary text-primary-foreground px-6 py-2 rounded-lg shadow-glow-accent font-bold text-lg">
+            <div className="bg-primary text-primary-foreground px-6 py-2 rounded-lg shadow-glow-accent font-bold text-lg -mt-8">
               {building.name}
             </div>
 
