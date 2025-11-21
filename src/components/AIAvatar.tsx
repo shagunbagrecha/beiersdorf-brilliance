@@ -38,18 +38,12 @@ export const AIAvatar = ({ message, gesture = "greeting" }: AIAvatarProps) => {
           ...gestureAnimations[gesture]
         }}
       >
-        {/* Glow effect */}
-        <div className="absolute inset-0 bg-accent/20 blur-3xl rounded-full" />
-        
-        {/* Avatar container */}
-        <div className="relative w-48 h-72 flex items-center justify-center">
-          <div className="absolute inset-0 bg-gradient-primary rounded-3xl shadow-glow-accent" />
-          <img 
-            src={avatarImage} 
-            alt="AI Assistant" 
-            className="relative w-full h-full object-contain p-4"
-          />
-        </div>
+        {/* NIVEA Avatar */}
+        <img 
+          src={avatarImage} 
+          alt="NIVEA AI Assistant" 
+          className="w-64 h-64 object-contain drop-shadow-2xl"
+        />
       </motion.div>
 
       {/* Message bubble */}

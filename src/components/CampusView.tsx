@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Database, Megaphone, AlertTriangle, Users } from "lucide-react";
 import { Button } from "./ui/button";
-import { CountdownTimer } from "./CountdownTimer";
+import { Progress } from "./ui/progress";
 import campusBackground from "@/assets/campus-background.png";
 
 interface Building {
@@ -19,10 +19,6 @@ interface CampusViewProps {
 }
 
 export const CampusView = ({ onBuildingSelect, completedBuildings }: CampusViewProps) => {
-  // Set challenge end dates (30 days from now for demo)
-  const challengeEndDate = new Date();
-  challengeEndDate.setDate(challengeEndDate.getDate() + 30);
-
   const buildings: Building[] = [
     {
       id: 1,
@@ -90,20 +86,25 @@ export const CampusView = ({ onBuildingSelect, completedBuildings }: CampusViewP
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: index * 0.2 }}
-            className="absolute"
+            className="absolute flex flex-col items-center gap-4"
             style={{ 
               left: building.position.x, 
               top: building.position.y,
               transform: 'translate(-50%, -50%)'
             }}
           >
+            {/* Building Name Label on Top */}
+            <div className="bg-primary text-primary-foreground px-6 py-2 rounded-lg shadow-glow-accent font-bold text-lg">
+              {building.name}
+            </div>
+
             <Button
               onClick={() => onBuildingSelect(building.id)}
               className="relative group bg-card hover:bg-card/90 border-border"
               variant="outline"
               size="lg"
             >
-              <div className="flex flex-col items-center gap-3 p-6 min-w-[280px]">
+              <div className="flex flex-col items-center gap-3 p-6 min-w-[240px]">
                 {/* Icon Container */}
                 <motion.div
                   className={`relative w-20 h-20 rounded-2xl flex items-center justify-center transition-all duration-smooth
@@ -127,17 +128,9 @@ export const CampusView = ({ onBuildingSelect, completedBuildings }: CampusViewP
 
                 {/* Building Info */}
                 <div className="text-center">
-                  <h3 className="font-semibold text-lg text-foreground">
-                    {building.name}
-                  </h3>
-                  <p className="text-sm text-muted-foreground mt-1 mb-3">
+                  <p className="text-sm text-muted-foreground">
                     {building.description}
                   </p>
-                  
-                  {/* Countdown Timer */}
-                  <div className="pt-3 border-t border-border">
-                    <CountdownTimer endDate={challengeEndDate} />
-                  </div>
                 </div>
               </div>
             </Button>
@@ -149,15 +142,16 @@ export const CampusView = ({ onBuildingSelect, completedBuildings }: CampusViewP
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 w-full max-w-lg px-4"
       >
-        <div className="bg-card border border-border rounded-full px-8 py-4 shadow-premium">
-          <p className="text-foreground text-center">
-            <span className="font-bold text-accent text-2xl">{completedBuildings.length}</span>
-            <span className="text-muted-foreground mx-2">/</span>
-            <span className="text-muted-foreground text-xl">4</span>
-            <span className="text-muted-foreground ml-3">Fragments Recovered</span>
-          </p>
+        <div className="bg-card border border-border rounded-2xl px-8 py-6 shadow-premium">
+          <div className="flex items-center justify-between mb-3">
+            <p className="text-foreground font-semibold">Mission Progress</p>
+            <p className="text-accent font-bold text-lg">
+              {completedBuildings.length} / 4 Fragments
+            </p>
+          </div>
+          <Progress value={(completedBuildings.length / 4) * 100} className="h-3" />
         </div>
       </motion.div>
     </div>
