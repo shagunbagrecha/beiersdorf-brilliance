@@ -6,6 +6,7 @@ import { InformationAnalysisChallenge } from "@/components/challenges/Informatio
 import { MarketingCampaignChallenge } from "@/components/challenges/MarketingCampaignChallenge";
 import { CrisisResponseChallenge } from "@/components/challenges/CrisisResponseChallenge";
 import { VirtualMeetingChallenge } from "@/components/challenges/VirtualMeetingChallenge";
+import { Header } from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import {
   Breadcrumb,
@@ -16,6 +17,7 @@ import {
   BreadcrumbPage,
 } from "@/components/ui/breadcrumb";
 import { Home } from "lucide-react";
+import beiersdorfLogo from "@/assets/beiersdorf-logo.png";
 
 type GameState = "intro" | "campus" | "challenge" | "complete";
 type Score = "best" | "mid" | "poor";
@@ -71,6 +73,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Header />
       <AnimatePresence mode="wait">
         {gameState === "intro" && (
           <motion.div
@@ -78,16 +81,23 @@ const Index = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="flex flex-col items-center justify-center min-h-screen p-8"
+            className="flex flex-col items-center justify-center min-h-screen p-8 pt-24"
           >
-            <motion.h1
+            <motion.div
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-6xl font-bold text-foreground mb-8 text-center"
+              className="mb-8"
             >
-              Beiersdorf Campus
-            </motion.h1>
+              <img 
+                src={beiersdorfLogo} 
+                alt="Beiersdorf" 
+                className="h-16 mx-auto mb-4 object-contain"
+              />
+              <h1 className="text-6xl font-bold text-foreground text-center">
+                Beiersdorf Campus
+              </h1>
+            </motion.div>
             
             <AIAvatar 
               message="Welcome to the Beiersdorf Campus. A valuable formula has been stolen and divided into four fragments. Each fragment is hidden in one of our campus buildings. Are you ready to recover them?"
@@ -117,8 +127,9 @@ const Index = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            className="pt-16"
           >
-            <div className="fixed top-6 left-6 z-50">
+            <div className="fixed top-20 left-6 z-50">
               <Breadcrumb>
                 <BreadcrumbList className="bg-card/90 backdrop-blur-sm px-4 py-2 rounded-lg border border-border shadow-premium">
                   <BreadcrumbItem>
@@ -144,8 +155,9 @@ const Index = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.5 }}
+            className="pt-16"
           >
-            <div className="fixed top-6 left-6 z-50">
+            <div className="fixed top-20 left-6 z-50">
               <Breadcrumb>
                 <BreadcrumbList className="bg-card/90 backdrop-blur-sm px-4 py-2 rounded-lg border border-border shadow-premium">
                   <BreadcrumbItem>
@@ -194,7 +206,7 @@ const Index = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="flex flex-col items-center justify-center min-h-screen p-8"
+            className="flex flex-col items-center justify-center min-h-screen p-8 pt-24"
           >
             <motion.div
               initial={{ scale: 0 }}

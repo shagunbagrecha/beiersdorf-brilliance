@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Database, Megaphone, AlertTriangle, Users } from "lucide-react";
 import { Button } from "./ui/button";
+import { CountdownTimer } from "./CountdownTimer";
 import campusBackground from "@/assets/campus-background.png";
 
 interface Building {
@@ -18,6 +19,10 @@ interface CampusViewProps {
 }
 
 export const CampusView = ({ onBuildingSelect, completedBuildings }: CampusViewProps) => {
+  // Set challenge end dates (30 days from now for demo)
+  const challengeEndDate = new Date();
+  challengeEndDate.setDate(challengeEndDate.getDate() + 30);
+
   const buildings: Building[] = [
     {
       id: 1,
@@ -94,17 +99,17 @@ export const CampusView = ({ onBuildingSelect, completedBuildings }: CampusViewP
           >
             <Button
               onClick={() => onBuildingSelect(building.id)}
-              className="relative group"
+              className="relative group bg-card hover:bg-card/90 border-border"
               variant="outline"
               size="lg"
             >
-              <div className="flex flex-col items-center gap-3 p-6">
+              <div className="flex flex-col items-center gap-3 p-6 min-w-[280px]">
                 {/* Icon Container */}
                 <motion.div
                   className={`relative w-20 h-20 rounded-2xl flex items-center justify-center transition-all duration-smooth
                     ${building.completed 
                       ? 'bg-accent text-accent-foreground shadow-glow-accent' 
-                      : 'bg-card text-foreground border-2 border-border group-hover:border-accent'
+                      : 'bg-primary/10 text-primary border-2 border-primary group-hover:border-accent group-hover:bg-accent/10'
                     }`}
                   whileHover={{ scale: 1.1, rotate: 5 }}
                 >
@@ -113,7 +118,7 @@ export const CampusView = ({ onBuildingSelect, completedBuildings }: CampusViewP
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      className="absolute -top-2 -right-2 w-8 h-8 bg-accent rounded-full flex items-center justify-center text-sm font-bold"
+                      className="absolute -top-2 -right-2 w-8 h-8 bg-accent rounded-full flex items-center justify-center text-sm font-bold shadow-glow-accent"
                     >
                       ✓
                     </motion.div>
@@ -125,9 +130,14 @@ export const CampusView = ({ onBuildingSelect, completedBuildings }: CampusViewP
                   <h3 className="font-semibold text-lg text-foreground">
                     {building.name}
                   </h3>
-                  <p className="text-sm text-muted-foreground mt-1">
+                  <p className="text-sm text-muted-foreground mt-1 mb-3">
                     {building.description}
                   </p>
+                  
+                  {/* Countdown Timer */}
+                  <div className="pt-3 border-t border-border">
+                    <CountdownTimer endDate={challengeEndDate} />
+                  </div>
                 </div>
               </div>
             </Button>
