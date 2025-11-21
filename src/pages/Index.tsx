@@ -7,6 +7,15 @@ import { MarketingCampaignChallenge } from "@/components/challenges/MarketingCam
 import { CrisisResponseChallenge } from "@/components/challenges/CrisisResponseChallenge";
 import { VirtualMeetingChallenge } from "@/components/challenges/VirtualMeetingChallenge";
 import { Button } from "@/components/ui/button";
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
+  BreadcrumbPage,
+} from "@/components/ui/breadcrumb";
+import { Home } from "lucide-react";
 
 type GameState = "intro" | "campus" | "challenge" | "complete";
 type Score = "best" | "mid" | "poor";
@@ -48,6 +57,16 @@ const Index = () => {
     if (bestCount >= 3) return "Strategic Visionary";
     if (bestCount >= 2) return "Adaptive Leader";
     return "Emerging Talent";
+  };
+
+  const getBuildingName = (id: number) => {
+    const names = { 1: "Roots", 2: "Action", 3: "Connect", 4: "Empower" };
+    return names[id as keyof typeof names];
+  };
+
+  const handleBackToCampus = () => {
+    setSelectedBuilding(null);
+    setGameState("campus");
   };
 
   return (
@@ -99,6 +118,18 @@ const Index = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
+            <div className="fixed top-6 left-6 z-50">
+              <Breadcrumb>
+                <BreadcrumbList className="bg-card/90 backdrop-blur-sm px-4 py-2 rounded-lg border border-border shadow-premium">
+                  <BreadcrumbItem>
+                    <BreadcrumbLink className="flex items-center gap-2 text-foreground">
+                      <Home className="w-4 h-4" />
+                      Campus
+                    </BreadcrumbLink>
+                  </BreadcrumbItem>
+                </BreadcrumbList>
+              </Breadcrumb>
+            </div>
             <CampusView 
               onBuildingSelect={handleBuildingSelect}
               completedBuildings={completedBuildings}
@@ -109,22 +140,51 @@ const Index = () => {
         {gameState === "challenge" && selectedBuilding && (
           <motion.div
             key="challenge"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.5 }}
           >
-            {selectedBuilding === 1 && (
-              <InformationAnalysisChallenge onComplete={handleChallengeComplete} />
-            )}
-            {selectedBuilding === 2 && (
-              <MarketingCampaignChallenge onComplete={handleChallengeComplete} />
-            )}
-            {selectedBuilding === 3 && (
-              <CrisisResponseChallenge onComplete={handleChallengeComplete} />
-            )}
-            {selectedBuilding === 4 && (
-              <VirtualMeetingChallenge onComplete={handleChallengeComplete} />
-            )}
+            <div className="fixed top-6 left-6 z-50">
+              <Breadcrumb>
+                <BreadcrumbList className="bg-card/90 backdrop-blur-sm px-4 py-2 rounded-lg border border-border shadow-premium">
+                  <BreadcrumbItem>
+                    <BreadcrumbLink 
+                      onClick={handleBackToCampus}
+                      className="flex items-center gap-2 text-foreground cursor-pointer hover:text-accent transition-colors"
+                    >
+                      <Home className="w-4 h-4" />
+                      Campus
+                    </BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbPage className="text-accent font-semibold">
+                      {getBuildingName(selectedBuilding)}
+                    </BreadcrumbPage>
+                  </BreadcrumbItem>
+                </BreadcrumbList>
+              </Breadcrumb>
+            </div>
+            
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.4 }}
+            >
+              {selectedBuilding === 1 && (
+                <InformationAnalysisChallenge onComplete={handleChallengeComplete} />
+              )}
+              {selectedBuilding === 2 && (
+                <MarketingCampaignChallenge onComplete={handleChallengeComplete} />
+              )}
+              {selectedBuilding === 3 && (
+                <CrisisResponseChallenge onComplete={handleChallengeComplete} />
+              )}
+              {selectedBuilding === 4 && (
+                <VirtualMeetingChallenge onComplete={handleChallengeComplete} />
+              )}
+            </motion.div>
           </motion.div>
         )}
 
