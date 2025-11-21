@@ -24,7 +24,7 @@ export const CampusView = ({ onBuildingSelect, completedBuildings }: CampusViewP
       name: "Roots",
       icon: <Database className="w-8 h-8" />,
       description: "Foundation & Knowledge Base",
-      position: { x: "20%", y: "35%" },
+      position: { x: "20%", y: "30%" },
       completed: completedBuildings.includes(1),
     },
     {
@@ -32,7 +32,7 @@ export const CampusView = ({ onBuildingSelect, completedBuildings }: CampusViewP
       name: "Action",
       icon: <Megaphone className="w-8 h-8" />,
       description: "Strategic Implementation",
-      position: { x: "70%", y: "30%" },
+      position: { x: "70%", y: "25%" },
       completed: completedBuildings.includes(2),
     },
     {
@@ -40,7 +40,7 @@ export const CampusView = ({ onBuildingSelect, completedBuildings }: CampusViewP
       name: "Connect",
       icon: <AlertTriangle className="w-8 h-8" />,
       description: "Adaptive Response",
-      position: { x: "25%", y: "70%" },
+      position: { x: "25%", y: "65%" },
       completed: completedBuildings.includes(3),
     },
     {
@@ -48,7 +48,7 @@ export const CampusView = ({ onBuildingSelect, completedBuildings }: CampusViewP
       name: "Empower",
       icon: <Users className="w-8 h-8" />,
       description: "Team Leadership",
-      position: { x: "75%", y: "75%" },
+      position: { x: "75%", y: "70%" },
       completed: completedBuildings.includes(4),
     },
   ];
