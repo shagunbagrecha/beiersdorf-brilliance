@@ -2,7 +2,7 @@
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/335533f3-88b4-4096-9391-4bf3141930a2
+**URL**: https://id-preview--3b1c1baa-9183-4ff1-ae6f-f1c7198ffd27.lovable.app/?__lovable_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibjNLM0UyenRtR2c1RFN5WWFBZjFWaFZyZnc3MiIsInByb2plY3RfaWQiOiIzYjFjMWJhYS05MTgzLTRmZjEtYWU2Zi1mMWM3MTk4ZmZkMjciLCJub25jZSI6ImNkNTc2OWYwZmVkMTZhN2FiY2NlOTEzMmM0MmI1NjFkIiwiaXNzIjoibG92YWJsZS1hcGkiLCJzdWIiOiIzYjFjMWJhYS05MTgzLTRmZjEtYWU2Zi1mMWM3MTk4ZmZkMjciLCJhdWQiOlsibG92YWJsZS1hcHAiXSwiZXhwIjoxNzY0NjcxMTMxLCJuYmYiOjE3NjQwNjYzMzEsImlhdCI6MTc2NDA2NjMzMX0.nysDxBe2YkI7GkstTjn7mcHhTiOaKtmEUKtwhggBFcE
 
 ## How can I edit this code?
 
