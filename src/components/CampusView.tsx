@@ -105,7 +105,13 @@ export const CampusView = ({ onBuildingSelect, completedBuildings }: CampusViewP
               {building.name}
             </div>
 
-            {/* Building Card */}
+            {/* CLICKABLE BUILDING CARD */}
+            <Button
+              onClick={() => onBuildingSelect(building.id)}
+              className="relative bg-card hover:bg-card/90 border-border group"
+              variant="outline"
+              size="lg"
+            >
               <div className="flex flex-col items-center gap-3 p-6 min-w-[220px]">
                 {/* Icon */}
                 <motion.div
@@ -113,7 +119,7 @@ export const CampusView = ({ onBuildingSelect, completedBuildings }: CampusViewP
                     ${
                       building.completed
                         ? "bg-accent text-accent-foreground shadow-glow-accent"
-                        : "bg-primary/10 text-primary border-2 border-primary hover:border-accent hover:bg-accent/10"
+                        : "bg-primary/10 text-primary border-2 border-primary group-hover:border-accent group-hover:bg-accent/10"
                     }`}
                   whileHover={{ scale: 1.1, rotate: 5 }}
                 >
@@ -137,6 +143,7 @@ export const CampusView = ({ onBuildingSelect, completedBuildings }: CampusViewP
                   </p>
                 </div>
               </div>
+            </Button>
           </motion.div>
         ))}
       </div>
