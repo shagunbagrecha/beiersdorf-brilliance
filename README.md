@@ -2,7 +2,7 @@
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/3b1c1baa-9183-4ff1-ae6f-f1c7198ffd27
+**URL**: https://campus-formula-quest.lovable.app
 
 ## How can I edit this code?
 
