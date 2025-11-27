@@ -57,7 +57,7 @@ All colors MUST be HSL.
 
   .dark {
     /* Beiersdorf Official Brand Colors - Dark Mode */
-    --background: 226 53% 44%;
+    --background: 0 0% 8%;
     --foreground: 0 0% 100%;
 
     --card: 217 100% 31%;
